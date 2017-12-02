@@ -83,7 +83,7 @@ def scrapeContent():
 		if len(results) >= 10:
 			print('Total e-mails found in ' + str.rstrip(key) + ': ' + str(len(results)))
 ##
-			file = open(str.rstrip(key) + ".txt", "a+")
+			file = open("./pastes/" + str.rstrip(key) + ".txt", "a+")
 			for email in results:
 				file.write(email + '\n')
 ##
@@ -112,7 +112,7 @@ def pulseKeys(bStore, key):
 			with open(keyfile, 'w') as fout:
 				fout.writelines(keys[1:])
 
-			keys[0].replace('\n', '')
+			keys[0].rstrip()
 			return keys[0]
 
 	elif bStore == 1:
@@ -141,5 +141,3 @@ if not os.path.isfile("./pastebin.keys"):
 
 t1 = RepeatedTimer(1.75, scrapeContent)
 t2 = RepeatedTimer(90, scrapeKeys)
-
-
